@@ -31,6 +31,7 @@
         .grad-emerald { background: linear-gradient(135deg, #10b981, #059669); }
         .grad-amber { background: linear-gradient(135deg, #f59e0b, #d97706); }
         .grad-rose { background: linear-gradient(135deg, #f43f5e, #e11d48); }
+        .grad-indigo { background: linear-gradient(135deg, #6366f1, #4f46e5); }
 
         .glass-card {
             background: rgba(255, 255, 255, 0.9);
@@ -102,13 +103,13 @@
     <div id="loading" class="loading-overlay">
         <div class="text-center">
             <div class="w-16 h-16 border-4 border-blue-500/20 border-t-blue-500 rounded-full animate-spin mx-auto mb-4"></div>
-            <p class="text-white font-black text-sm tracking-widest text-center">مزامنة بيانات المتعهدين...</p>
+            <p class="text-white font-black text-sm tracking-widest text-center">مزامنة بيانات المتعهدين الجديدة...</p>
         </div>
     </div>
 
     <!-- Floating Refresh -->
     <button onclick="syncData()" id="refreshBtn" class="fixed bottom-8 left-8 z-[1000] grad-blue text-white p-5 rounded-full active:scale-90 transition-all shadow-xl group">
-        <i data-lucide="refresh-cw" class="w-7 h-7 group-hover:rotate-180 transition-transform duration-500"></i>
+        <i data-lucide="refresh-cw" class="w-7 h-7 group-hover:rotate-180 transition-transform duration-500 text-center"></i>
     </button>
 
     <header class="premium-header sticky top-0 z-[100] transition-all duration-500">
@@ -118,8 +119,8 @@
                     <i data-lucide="tent" class="w-6 h-6"></i>
                 </div>
                 <div>
-                    <h1 class="text-xl font-black text-white leading-none tracking-tight">مرصد منى 2026</h1>
-                    <p id="liveStatusText" class="text-[10px] text-emerald-400 font-bold uppercase tracking-widest mt-1.5 flex items-center gap-1.5">
+                    <h1 class="text-xl font-black text-white leading-none tracking-tight text-right">مرصد منى 2026</h1>
+                    <p id="liveStatusText" class="text-[10px] text-emerald-400 font-bold uppercase tracking-widest mt-1.5 flex items-center gap-1.5 text-right">
                         <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span>
                         مزامنة حية
                     </p>
@@ -127,7 +128,7 @@
             </div>
             <div class="hidden md:block bg-white/5 border border-white/10 px-5 py-2.5 rounded-2xl text-right backdrop-blur-md">
                 <div class="flex items-center gap-2.5">
-                    <i data-lucide="clock" class="w-4 h-4 text-slate-400"></i>
+                    <i data-lucide="clock" class="w-4 h-4 text-slate-400 text-right"></i>
                     <span id="currentTime" class="text-xs font-black text-slate-200 tracking-wider">00:00:00 AM</span>
                 </div>
             </div>
@@ -137,41 +138,49 @@
     <main class="max-w-7xl mx-auto px-6 py-8 space-y-8">
         
         <!-- KPIs Section -->
-        <section class="grid grid-cols-2 md:grid-cols-5 gap-4 animate-in">
-            <div class="kpi-card glass-card group text-right shadow-sm">
+        <section class="grid grid-cols-2 md:grid-cols-6 gap-4 animate-in">
+            <div class="kpi-card glass-card group text-right shadow-sm border-r-4 border-blue-500">
                 <div class="flex justify-between items-center mb-4">
-                    <div class="icon-box p-2 bg-blue-50 rounded-lg text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all"><i data-lucide="droplets" class="w-4 h-4"></i></div>
+                    <div class="icon-box p-2 bg-blue-50 rounded-lg text-blue-600"><i data-lucide="droplets" class="w-4 h-4"></i></div>
                     <span class="text-[10px] font-black text-slate-400 uppercase tracking-tighter">نواقص المياه</span>
                 </div>
                 <div class="text-4xl font-black text-slate-800" id="stat-water">0</div>
             </div>
-            <div class="kpi-card glass-card group text-right shadow-sm">
+            <div class="kpi-card glass-card group text-right shadow-sm border-r-4 border-amber-500">
                 <div class="flex justify-between items-center mb-4">
-                    <div class="icon-box p-2 bg-amber-50 rounded-lg text-amber-600 group-hover:bg-amber-600 group-hover:text-white transition-all"><i data-lucide="zap" class="w-4 h-4"></i></div>
+                    <div class="icon-box p-2 bg-amber-50 rounded-lg text-amber-600"><i data-lucide="zap" class="w-4 h-4"></i></div>
                     <span class="text-[10px] font-black text-slate-400 uppercase tracking-tighter">نواقص الكهرباء</span>
                 </div>
                 <div class="text-4xl font-black text-slate-800" id="stat-electricity">0</div>
             </div>
-            <div class="kpi-card glass-card group text-right shadow-sm">
+            <div class="kpi-card glass-card group text-right shadow-sm border-r-4 border-purple-500">
                 <div class="flex justify-between items-center mb-4">
-                    <div class="icon-box p-2 bg-purple-50 rounded-lg text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-all"><i data-lucide="settings" class="w-4 h-4"></i></div>
+                    <div class="icon-box p-2 bg-purple-50 rounded-lg text-purple-600"><i data-lucide="settings" class="w-4 h-4"></i></div>
                     <span class="text-[10px] font-black text-slate-400 uppercase tracking-tighter">نواقص الأجهزة</span>
                 </div>
                 <div class="text-4xl font-black text-slate-800" id="stat-appliances">0</div>
             </div>
-            <div class="kpi-card glass-card group text-right shadow-sm">
+            <div class="kpi-card glass-card group text-right shadow-sm border-r-4 border-orange-500">
                 <div class="flex justify-between items-center mb-4">
-                    <div class="icon-box p-2 bg-orange-50 rounded-lg text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-all"><i data-lucide="utensils" class="w-4 h-4"></i></div>
+                    <div class="icon-box p-2 bg-orange-50 rounded-lg text-orange-600"><i data-lucide="utensils" class="w-4 h-4"></i></div>
                     <span class="text-[10px] font-black text-slate-400 uppercase tracking-tighter">نواقص الأدوات</span>
                 </div>
                 <div class="text-4xl font-black text-slate-800" id="stat-tools">0</div>
             </div>
-            <div class="kpi-card glass-card group text-right shadow-sm">
+            <div class="kpi-card glass-card group text-right shadow-sm border-r-4 border-emerald-500">
                 <div class="flex justify-between items-center mb-4">
-                    <div class="icon-box p-2 bg-emerald-50 rounded-lg text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all"><i data-lucide="layers" class="w-4 h-4"></i></div>
+                    <div class="icon-box p-2 bg-emerald-50 rounded-lg text-emerald-600"><i data-lucide="layers" class="w-4 h-4"></i></div>
                     <span class="text-[10px] font-black text-slate-400 uppercase tracking-tighter">نواقص الأرضية</span>
                 </div>
                 <div class="text-4xl font-black text-slate-800" id="stat-floors">0</div>
+            </div>
+            <!-- KPI جديد للغلايات -->
+            <div class="kpi-card glass-card group text-right shadow-sm border-r-4 border-indigo-500">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="icon-box p-2 bg-indigo-50 rounded-lg text-indigo-600"><i data-lucide="coffee" class="w-4 h-4"></i></div>
+                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-tighter">نواقص الغلايات</span>
+                </div>
+                <div class="text-4xl font-black text-slate-800" id="stat-boilers">0</div>
             </div>
         </section>
 
@@ -180,7 +189,7 @@
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4 text-right">
                 <div class="flex items-center gap-3">
                     <div class="bg-slate-900 p-2.5 rounded-xl text-white shadow-lg pulse-soft"><i data-lucide="grid-3x3" class="w-5 h-5"></i></div>
-                    <h2 class="text-xl font-black text-slate-800 tracking-tight">خريطة الجاهزية الرقمية</h2>
+                    <h2 class="text-xl font-black text-slate-800 tracking-tight">خريطة الجاهزية الرقمية - منى</h2>
                 </div>
                 <div class="flex bg-slate-50 p-2 rounded-2xl border border-slate-200 gap-4 text-right text-[10px] font-black uppercase text-slate-500">
                     <div class="flex items-center gap-1.5"><div class="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]"></div> جاهز</div>
@@ -195,16 +204,17 @@
         <section id="explorer" class="space-y-4 animate-in" style="animation-delay: 0.2s">
             <div class="w-full relative group">
                 <input type="text" id="searchInput" placeholder="بحث سريع بالمتعهد، المركز، المراقب، أو الشاخص..." class="w-full pl-6 pr-14 py-5 bg-white border-2 border-slate-100 rounded-[2rem] outline-none focus:ring-8 focus:ring-blue-500/5 focus:border-blue-500 transition-all font-bold text-right shadow-sm group-hover:border-slate-300">
-                <i data-lucide="search" class="absolute right-6 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-blue-500 transition-all"></i>
+                <i data-lucide="search" class="absolute right-6 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-blue-500 transition-all text-center"></i>
             </div>
 
-            <div class="flex gap-2 overflow-x-auto no-scrollbar py-2 bg-white/50 p-3 rounded-[2.5rem] border border-slate-100 shadow-inner">
+            <div class="flex gap-2 overflow-x-auto no-scrollbar py-2 bg-white/50 p-3 rounded-[2.5rem] border border-slate-100 shadow-inner text-right">
                 <button data-category="all" onclick="switchCategory('all')" class="tab-btn-pill px-6 py-4 bg-white border border-slate-200 rounded-full text-xs font-black text-slate-500 tab-active"><i data-lucide="layout-grid" class="w-4 h-4 text-center"></i> الكل</button>
                 <button data-category="water" onclick="switchCategory('water')" class="tab-btn-pill px-6 py-4 bg-white border border-slate-200 rounded-full text-xs font-black text-slate-500"><i data-lucide="droplets" class="w-4 h-4 text-blue-500 text-center"></i> المياه</button>
                 <button data-category="electricity" onclick="switchCategory('electricity')" class="tab-btn-pill px-6 py-4 bg-white border border-slate-200 rounded-full text-xs font-black text-slate-500"><i data-lucide="zap" class="w-4 h-4 text-amber-500 text-center"></i> الكهرباء</button>
                 <button data-category="appliances" onclick="switchCategory('appliances')" class="tab-btn-pill px-6 py-4 bg-white border border-slate-200 rounded-full text-xs font-black text-slate-500"><i data-lucide="settings" class="w-4 h-4 text-purple-500 text-center"></i> الأجهزة</button>
                 <button data-category="tools" onclick="switchCategory('tools')" class="tab-btn-pill px-6 py-4 bg-white border border-slate-200 rounded-full text-xs font-black text-slate-500"><i data-lucide="utensils" class="w-4 h-4 text-orange-500 text-center"></i> الأدوات</button>
                 <button data-category="floors" onclick="switchCategory('floors')" class="tab-btn-pill px-6 py-4 bg-white border border-slate-200 rounded-full text-xs font-black text-slate-500"><i data-lucide="layers" class="w-4 h-4 text-emerald-500 text-center"></i> الأرضية</button>
+                <button data-category="boilers" onclick="switchCategory('boilers')" class="tab-btn-pill px-6 py-4 bg-white border border-slate-200 rounded-full text-xs font-black text-slate-500"><i data-lucide="coffee" class="w-4 h-4 text-indigo-500 text-center"></i> الغلايات</button>
             </div>
             
             <div id="cardsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-24 text-right"></div>
@@ -215,7 +225,7 @@
         const CONST_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT_Q8udaltEwCQL-33qnpxJHHIFWZVGEqL3wKgSKqL2eDd192MkgIE_mt5KzWRP-HGu_hEkiGmdQvay/pub?gid=498208451&single=true&output=csv"; 
         
         let allEntries = [];
-        let reportData = { electricity: [], water: [], appliances: [], tools: [], floors: [] };
+        let reportData = { electricity: [], water: [], appliances: [], tools: [], floors: [], boilers: [] };
         const state = { currentCategory: 'all', searchQuery: '', isExactId: false };
 
         function switchCategory(cat) {
@@ -250,20 +260,21 @@
         function processCSV(text) {
             const lines = text.split(/\r?\n/);
             const results = [];
-            const cats = { electricity: [], water: [], appliances: [], tools: [], floors: [] };
+            const cats = { electricity: [], water: [], appliances: [], tools: [], floors: [], boilers: [] };
             
             for (let i = 1; i < lines.length; i++) {
                 if (!lines[i]) continue;
                 const col = lines[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-                if (col.length < 15) continue;
+                if (col.length < 20) continue; // التأكد من وصولنا للأعمدة T و U
+                
                 const clean = (v) => v ? v.replace(/"/g, '').trim() : "";
                 
                 const entry = {
-                    id: clean(col[0]).match(/\d+/)?.[0] || clean(col[0]), // A: المركز
-                    timestamp: clean(col[1]), // B: الوقت
-                    observer: clean(col[2]), // C: المراقب
-                    name: clean(col[3]), // D: اسم المتعهد الميداني
-                    signpost: clean(col[4]), // E: الشاخص
+                    id: clean(col[0]).match(/\d+/)?.[0] || clean(col[0]), // A
+                    timestamp: clean(col[1]), // B
+                    observer: clean(col[2]), // C
+                    name: clean(col[3]), // D
+                    signpost: clean(col[4]), // E
                     floorFail: clean(col[6]).includes('لا'), // G
                     floorImg: getImgUrl(clean(col[7])), // H
                     elecFail: clean(col[8]).includes('لا'), // I
@@ -277,6 +288,9 @@
                     note: clean(col[16]) || "لا توجد ملاحظات", // Q
                     buffet: clean(col[17]), // R
                     buffetImg: getImgUrl(clean(col[18])), // S
+                    // بند غلايات الماء الجديد
+                    boilersFail: clean(col[19]).includes('لا'), // T
+                    boilersImg: getImgUrl(clean(col[20])), // U
                 };
 
                 let heatmapScore = 0;
@@ -285,6 +299,7 @@
                 if(entry.toolFail) { cats.tools.push(entry); heatmapScore++; }
                 if(entry.waterFail) cats.water.push(entry);
                 if(entry.elecFail) cats.electricity.push(entry);
+                if(entry.boilersFail) { cats.boilers.push(entry); heatmapScore++; }
 
                 entry.heatmapScore = heatmapScore;
                 results.push(entry);
@@ -294,7 +309,7 @@
         }
 
         function renderAll() {
-            ['water', 'electricity', 'appliances', 'tools', 'floors'].forEach(k => {
+            ['water', 'electricity', 'appliances', 'tools', 'floors', 'boilers'].forEach(k => {
                 const el = document.getElementById('stat-' + k);
                 if(el) el.innerText = reportData[k].length;
             });
@@ -340,6 +355,7 @@
                     { label: 'الأرضية', fail: item.floorFail, img: item.floorImg },
                     { label: 'الأجهزة الكهربائية', fail: item.appFail, img: item.appImg },
                     { label: 'أدوات المتعهد', fail: item.toolFail, img: item.toolImg },
+                    { label: 'غلايات الماء', fail: item.boilersFail, img: item.boilersImg }, // البند الجديد
                     { label: 'الثلاجات (العدد: '+item.fridgesCount+')', fail: false, img: item.fridgesImg, isFridges: true }
                 ];
                 if (centerNum >= 20 && centerNum <= 25) { itemsList.push({ label: 'طاولات البوفية: '+item.buffet, fail: item.buffet.includes('لا'), img: item.buffetImg }); }
@@ -357,16 +373,15 @@
                             </div>
                         </div>
 
-                        <!-- تم تغيير العنوان ليظهر اسم المتعهد الفعلي من العمود D -->
                         <h3 class="text-xl font-black text-slate-800 mb-2 leading-tight text-right">${item.name || 'متعهد مطابخ منى'}</h3>
                         
                         <div class="flex flex-wrap gap-3 mb-6 text-right">
-                            <div class="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-100 shadow-sm">
-                                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-rose-500"></i>
+                            <div class="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-100 shadow-sm text-center">
+                                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-rose-500 text-center"></i>
                                 <span class="text-[11px] font-black text-slate-600 uppercase tracking-tighter">شاخص: ${item.signpost || '---'}</span>
                             </div>
-                            <div class="flex items-center gap-2 bg-blue-50 px-3 py-1.5 rounded-xl border border-blue-100 shadow-sm">
-                                <i data-lucide="user-check" class="w-3.5 h-3.5 text-blue-600"></i>
+                            <div class="flex items-center gap-2 bg-blue-50 px-3 py-1.5 rounded-xl border border-blue-100 shadow-sm text-center">
+                                <i data-lucide="user-check" class="w-3.5 h-3.5 text-blue-600 text-center"></i>
                                 <span class="text-[11px] font-black text-slate-500">المراقب: ${item.observer}</span>
                             </div>
                         </div>
@@ -378,29 +393,29 @@
                                     <span class="text-[12px] font-black text-emerald-600 uppercase tracking-widest text-center w-full">مكتمل الجاهزية التشغيلية</span>
                                 </div>
                             ` : ''}
-                            <div class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 border-b border-slate-100 pb-1">توثيق بنود المراجعة الميدانية:</div>
-                            <div class="grid grid-cols-1 gap-2">
+                            <div class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 border-b border-slate-100 pb-1 text-right">توثيق بنود المراجعة الميدانية:</div>
+                            <div class="grid grid-cols-1 gap-2 text-right">
                                 ${itemsList.map(f => `
-                                    <div class="flex flex-col bg-white border border-slate-100 p-3 rounded-2xl shadow-sm">
-                                        <div class="flex items-center justify-between mb-2">
-                                            <div class="flex items-center gap-2">
+                                    <div class="flex flex-col bg-white border border-slate-100 p-3 rounded-2xl shadow-sm text-right">
+                                        <div class="flex items-center justify-between mb-2 text-right">
+                                            <div class="flex items-center gap-2 text-right">
                                                 <div class="w-2 h-2 rounded-full ${f.fail ? 'bg-rose-500 shadow-[0_0_6px_#ef4444]' : 'bg-emerald-500 shadow-[0_0_6px_#10b981]'}"></div>
-                                                <span class="text-[11px] font-black ${f.fail ? 'text-rose-600' : 'text-slate-700'}">${f.label}</span>
+                                                <span class="text-[11px] font-black ${f.fail ? 'text-rose-600' : 'text-slate-700'} text-right">${f.label}</span>
                                             </div>
-                                            <span class="text-[9px] font-bold ${f.fail ? 'text-rose-400' : 'text-emerald-500'}">${f.fail ? 'تعثر' : 'مكتمل'}</span>
+                                            <span class="text-[9px] font-bold ${f.fail ? 'text-rose-400' : 'text-emerald-500'} text-right">${f.fail ? 'تعثر' : 'مكتمل'}</span>
                                         </div>
                                         ${f.img ? `
-                                            <a href="${f.img}" target="_blank" class="flex items-center justify-center gap-2 bg-slate-50 border border-slate-100 py-2 rounded-xl text-[10px] font-black text-blue-600 hover:bg-blue-50 transition-colors shadow-sm">
+                                            <a href="${f.img}" target="_blank" class="flex items-center justify-center gap-2 bg-slate-50 border border-slate-100 py-2 rounded-xl text-[10px] font-black text-blue-600 hover:bg-blue-50 transition-colors shadow-sm text-center">
                                                 <i data-lucide="image" class="w-3 h-3 text-center"></i> عرض صورة الإثبات
                                             </a>
-                                        ` : `<div class="text-center py-2 text-[9px] text-slate-300 italic font-bold">لا يوجد مرفق بصري</div>`}
+                                        ` : `<div class="text-center py-2 text-[9px] text-slate-300 italic font-bold text-center">لا يوجد مرفق بصري</div>`}
                                     </div>
                                 `).join('')}
                             </div>
                         </div>
-                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 mb-2 text-right shadow-inner">
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 mb-2 text-right shadow-inner text-right">
                             <div class="flex items-center gap-1.5 mb-1 text-right">
-                                <i data-lucide="message-square" class="w-3 h-3 text-slate-400"></i>
+                                <i data-lucide="message-square" class="w-3 h-3 text-slate-400 text-right"></i>
                                 <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest text-right">ملاحظة ميدانية</span>
                             </div>
                             <p class="text-[11px] font-bold text-slate-500 leading-relaxed italic text-right">${item.note}</p>
